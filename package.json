@@ -28,6 +28,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "is-async-supported": "^1.2.0",
     "tape": "^4.9.0",
     "zuul": "^1.0.10"
   },
