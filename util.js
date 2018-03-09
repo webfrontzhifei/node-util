@@ -662,7 +662,6 @@ function callbackifyOnRejected(reason, cb) {
     var newReason = new Error('Promise was rejected with a falsy value');
     newReason.reason = reason;
     reason = newReason;
-    Error.captureStackTrace(reason, callbackifyOnRejected);
   }
   return cb(reason);
 }
