@@ -190,7 +190,9 @@ test('util.promisify callback and sync throw', function (t) {
 });
 
 test('util.promisify throws for incorrect argument types', function (t) {
-  [undefined, null, true, 0, 'str', {}, [], Symbol()].forEach(function (input) {
+  var array = [undefined, null, true, 0, 'str', {}, []];
+  if (typeof Symbol !== 'undefined') array.push(Symbol());
+  array.forEach(function (input) {
     t.throws(
       function () { promisify(input); },
       'The "original" argument must be of type Function'
