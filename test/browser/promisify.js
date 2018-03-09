@@ -1,6 +1,8 @@
 var promisify = require('../../').promisify;
 var test = require('tape');
 
+var hasSymbol = typeof Symbol !== 'undefined';
+
 if (typeof Promise === 'undefined') {
   console.log('no global Promise found, skipping promisify tests');
   return;
@@ -32,7 +34,7 @@ test('util.promisify rejects', function (t) {
   });
 });
 
-test('util.promisify custom', function (t) {
+test('util.promisify custom', { skip: !hasSymbol }, function (t) {
   function fn() {}
   function promisifedFn() {}
   fn[promisify.custom] = promisifedFn;
@@ -41,7 +43,7 @@ test('util.promisify custom', function (t) {
   t.end();
 });
 
-test('util.promisify custom of invalid type', function (t) {
+test('util.promisify custom of invalid type', { skip: !hasSymbol }, function (t) {
   function fn2() {}
   fn2[promisify.custom] = 42;
   t.throws(
