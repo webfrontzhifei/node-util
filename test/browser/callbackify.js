@@ -43,7 +43,7 @@ test('util.callbackify resolution value is passed as second argument to callback
     var cbPromiseFn = callbackify(promiseFn);
     cbPromiseFn(function(err, ret) {
       t.ifError(err);
-      t.strictEqual(ret, value);
+      t.strictEqual(ret, value, 'cb ' + typeof value);
       end();
     });
 
@@ -59,7 +59,7 @@ test('util.callbackify resolution value is passed as second argument to callback
     var cbThenableFn = callbackify(thenableFn);
     cbThenableFn(function(err, ret) {
       t.ifError(err);
-      t.strictEqual(ret, value);
+      t.strictEqual(ret, value, 'thenable ' + typeof value);
       end();
     });
   });
@@ -76,7 +76,7 @@ test('util.callbackify rejection reason is passed as first argument to callback'
 
     var cbPromiseFn = callbackify(promiseFn);
     cbPromiseFn(function(err, ret) {
-      t.strictEqual(ret, undefined);
+      t.strictEqual(ret, undefined, 'cb ' + typeof value);
       if (err instanceof Error) {
         if ('reason' in err) {
           t.ok(!value);
@@ -102,7 +102,7 @@ test('util.callbackify rejection reason is passed as first argument to callback'
 
     var cbThenableFn = callbackify(thenableFn);
     cbThenableFn(function(err, ret) {
-      t.strictEqual(ret, undefined);
+      t.strictEqual(ret, undefined, 'thenable ' + typeof value);
       if (err instanceof Error) {
         if ('reason' in err) {
           t.ok(!value);
