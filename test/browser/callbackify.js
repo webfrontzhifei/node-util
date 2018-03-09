@@ -3,6 +3,11 @@
 var test = require('tape');
 var callbackify = require('../../').callbackify;
 
+if (typeof Promise === 'undefined') {
+  console.log('no global Promise found, skipping callbackify tests');
+  return;
+}
+
 function after (n, cb) {
   var i = 0;
   return function () {
