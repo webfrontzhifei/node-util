@@ -32,7 +32,7 @@ if (typeof Symbol !== 'undefined') {
 }
 
 test('util.callbackify resolution value is passed as second argument to callback', function (t) {
-  var end = after(2, t.end)
+  var end = after(values.length * 2, t.end);
   // Test that the resolution value is passed as second argument to callback
   values.forEach(function(value) {
     // Test Promise factory
@@ -66,7 +66,7 @@ test('util.callbackify resolution value is passed as second argument to callback
 });
 
 test('util.callbackify rejection reason is passed as first argument to callback', function (t) {
-  var end = after(2, t.end)
+  var end = after(values.length * 2, t.end);
   // Test that rejection reason is passed as first argument to callback
   values.forEach(function(value) {
     // test a Promise factory
