@@ -83,7 +83,7 @@ test('util.callbackify rejection reason is passed as first argument to callback'
           t.strictEqual(err.message, 'Promise was rejected with a falsy value');
           t.strictEqual(err.reason, value);
         } else {
-          t.strictEqual(String(value).endsWith(err.message), true);
+          t.strictEqual(String(value).slice(-err.message.length), err.message);
         }
       } else {
         t.strictEqual(err, value);
@@ -109,7 +109,7 @@ test('util.callbackify rejection reason is passed as first argument to callback'
           t.strictEqual(err.message, 'Promise was rejected with a falsy value');
           t.strictEqual(err.reason, value);
         } else {
-          t.strictEqual(String(value).endsWith(err.message), true);
+          t.strictEqual(String(value).slice(-err.message.length), err.message);
         }
       } else {
         t.strictEqual(err, value);
