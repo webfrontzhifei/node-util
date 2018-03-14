@@ -33,9 +33,9 @@ test('util.inspect - test for sparse array', function (t) {
 });
 
 test('util.inspect -  exceptions should print the error message, not \'{}\'', function (t) {
-  t.equal(util.inspect(new Error()), '[Error]');
-  t.equal(util.inspect(new Error('FAIL')), '[Error: FAIL]');
-  t.equal(util.inspect(new TypeError('FAIL')), '[TypeError: FAIL]');
-  t.equal(util.inspect(new SyntaxError('FAIL')), '[SyntaxError: FAIL]');
+  t.notEqual(util.inspect(new Error()).indexOf('[Error]'), -1);
+  t.notEqual(util.inspect(new Error('FAIL')).indexOf('[Error: FAIL]'), -1);
+  t.notEqual(util.inspect(new TypeError('FAIL')).indexOf('[TypeError: FAIL]'), -1);
+  t.notEqual(util.inspect(new SyntaxError('FAIL')).indexOf('[SyntaxError: FAIL]'), -1);
   t.end();
 });
